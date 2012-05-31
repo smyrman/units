@@ -94,28 +94,28 @@ func TestAngularVelocity(t *testing.T) {
 
 func TestUnitOperations(t *testing.T) {
 	// velocity = distance / time
-	v1 := DivideDistanceDuration(Meter, time.Second)
+	v1 := Meter.DivideWithDuration(time.Second)
 	v2 := MeterPerSecond
 	if !cmpf64(float64(v1), float64(v2)) {
 		t.Error("velocity != distance / time")
 	}
 	// distance = velocity * time
-	d1 := TimesVelocityDuration(MeterPerSecond, time.Second)
+	d1 := MeterPerSecond.MultiplyWithDuration(time.Second)
 	d2 := Meter
 	if !cmpf64(float64(d1), float64(d2)) {
 		t.Error("distance != velocity * time")
 	}
 
 	// angular velocity = angle / time
-	r1 := DivideAngleDuration(Radian, time.Second)
+	r1 := Radian.DivideWithDuration(time.Second)
 	r2 := RadianPerSecond
 	if !cmpf64(float64(r1), float64(r2)) {
 		t.Error("angular velocity != angle / time")
 	}
 
 	// angle = angular velocity * time
-	a1 := TimesAngularVelocityDuration(RadianPerSecond, time.Second)
-	a2 := RadianPerSecond
+	a1 := RadianPerSecond.MultiplyWithDuration(time.Second)
+	a2 := Radian
 	if !cmpf64(float64(a1), float64(a2)) {
 		t.Error("angle != angular velocity * time")
 	}
