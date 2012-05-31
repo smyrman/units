@@ -2,7 +2,7 @@ Units
 =====
 
 Units is a small go package that implements types, constants, converter
-functions and some mathematics for the following physical concepts:
+functions and some mathematics for the following physical types:
 
 * Distance
 * Velocity
