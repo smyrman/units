@@ -17,27 +17,21 @@ const (
 )
 
 func (v Velocity) MillimetersPerSecond() float64 {
-	return float64(v/MillimeterPerSecond)
+	return float64(v / MillimeterPerSecond)
 }
 
 func (v Velocity) CentimetersPerSecond() float64 {
-	return float64(v/CentimeterPerSecond)
+	return float64(v / CentimeterPerSecond)
 }
 
 func (v Velocity) MetersPerSecond() float64 {
-	return float64(v/MeterPerSecond)
+	return float64(v / MeterPerSecond)
 }
 
-func (v Velocity)KilometersPerSecond() float64 {
-	return float64(v/KilometerPerHour)
+func (v Velocity) KilometersPerSecond() float64 {
+	return float64(v / KilometerPerHour)
 }
 
 func (v Velocity) MultiplyWithDuration(t time.Duration) Distance {
-	return Distance(float64(v)*float64(t)/float64(time.Second))
+	return Distance(float64(v) * float64(t) / float64(time.Second))
 }
-
-// Backwards compatibility only
-//func TimesVelocityDuration(v Velocity, t time.Duration) Distance {
-//	return v.MultiplyWithDuration(t)
-//}
-

@@ -21,40 +21,41 @@ const (
 )
 
 func (d Distance) Micrometers() float64 {
-	return float64(d/Micrometer)
+	return float64(d / Micrometer)
 }
 
 func (d Distance) Millimeters() float64 {
-	return float64(d/Millimeter)
+	return float64(d / Millimeter)
 }
 
 func (d Distance) Centimeters() float64 {
-	return float64(d/Centimeter)
+	return float64(d / Centimeter)
 }
 
 func (d Distance) Meters() float64 {
-	return float64(d/Meter)
+	return float64(d / Meter)
 }
 
 func (d Distance) Kilometers() float64 {
-	return float64(d/Kilometer)
+	return float64(d / Kilometer)
 }
 
 /* Operations */
 
 func (d Distance) Abs() Distance {
-	if(d < 0) {return -d}
+	if d < 0 {
+		return -d
+	}
 	return d
 }
 
 func (d Distance) DivideWithDuration(t time.Duration) Velocity {
-	return Velocity(float64(d)/float64(t)*float64(time.Second))
+	return Velocity(float64(d) / float64(t) * float64(time.Second))
 }
 
 func Hypot(x, y Distance) Distance {
 	return Distance(math.Hypot(float64(x), float64(y)))
 }
-
 
 // Backward compatibillity only!
 //func DivideDistanceDuration(d Distance, t time.Duration) Velocity {
