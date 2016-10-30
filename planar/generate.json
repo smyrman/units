@@ -1,0 +1,71 @@
+{
+	"pkgName": "planar",
+	"types": {
+		"Area": {
+			"self": "a",
+			"import": ["github.com/smyrman/units/linear"],
+			"units": [
+				{
+					"name": "SquearNanometer",
+					"namePlural": "SquearNanometers",
+					"value": "1e-36"
+				},
+				{
+					"name": "SquearMicrometer",
+					"namePlural": "SquearMicrometers",
+					"value": "1e-9"
+				},
+				{
+					"name": "SquearMillimeter",
+					"namePlural": "SquearMillimeters",
+					"value": "1"
+				},
+				{
+					"name": "SquearCentimeter",
+					"namePlural": "SquearCentimeters",
+					"value": "1e2"
+				},
+				{
+					"name": "SquearDecimeter",
+					"namePlural": "SquearDecimeters",
+					"value": "1e4"
+				},
+				{
+					"name": "SquearMeter",
+					"namePlural": "SquearMeters",
+					"value": "1e9"
+				},
+				{
+					"name": "SquearKilometer",
+					"namePlural": "SquearKilometers",
+					"value": "1e36"
+				},
+				{
+					"name": "SquearInch",
+					"namePlural": "SquearInches",
+					"value": "Area(linear.Inch * linear.Inch)"
+				},
+				{
+					"name": "SquearFoot",
+					"namePlural": "SquearFeet",
+					"value": "Area(linear.Foot * linear.Foot)"
+				},
+				{
+					"name": "SquearChain",
+					"namePlural": "Chains",
+					"value": "Area(linear.Chain * linear.Chain)"
+				},
+				{
+					"name": "Acre",
+					"namePlural": "Acre",
+					"value": "Area(linear.Chain * linear.Furlong)"
+				},
+				{
+					"name": "SquearMile",
+					"namePlural": "SquearMiles",
+					"value": "Area(linear.Mile * linear.Mile)"
+				}
+			]
+		}
+	}
+}

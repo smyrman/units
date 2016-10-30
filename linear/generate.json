@@ -1,0 +1,137 @@
+{
+	"pkgName": "linear",
+	"types": {
+		"Distance": {
+			"self": "d",
+			"import": [],
+			"units": [
+				{
+					"name": "Nanometer",
+					"namePlural": "Nanometers",
+					"value": "1e-6"
+				},
+				{
+					"name": "Micrometer",
+					"namePlural": "Micrometers",
+					"value": "1e-3"
+				},
+				{
+					"name": "Millimeter",
+					"namePlural": "Millimeters",
+					"value": "1"
+				},
+				{
+					"name": "Centimeter",
+					"namePlural": "Centimeters",
+					"value": "1e1"
+				},
+				{
+					"name": "Decimeter",
+					"namePlural": "Decimeters",
+					"value": "1e2"
+				},
+				{
+					"name": "Meter",
+					"namePlural": "Meters",
+					"value": "1e3"
+				},
+				{
+					"name": "Kilometer",
+					"namePlural": "Kilometers",
+					"value": "1e6"
+				},
+				{
+					"name": "Thou",
+					"namePlural": "Thou",
+					"value": "0.0254 * Millimeter"
+				},
+				{
+					"name": "Inch",
+					"namePlural": "Inches",
+					"value": "25.4 * Millimeter"
+				},
+				{
+					"name": "Foot",
+					"namePlural": "Feet",
+					"value": "304.8 * Millimeter"
+				},
+				{
+					"name": "Yard",
+					"namePlural": "Yards",
+					"value": "3 * Foot"
+				},
+				{
+					"name": "Chain",
+					"namePlural": "Chains",
+					"value": "66 * Foot"
+				},
+				{
+					"name": "Furlong",
+					"namePlural": "Furlongs",
+					"value": "660 * Foot"
+				},
+				{
+					"name": "Mile",
+					"namePlural": "Miles",
+					"value": "5280 * Foot"
+				},
+				{
+					"name": "Fathom",
+					"namePlural": "Fathoms",
+					"value": "6.08 * Foot"
+				},
+				{
+					"name": "Cable",
+					"namePlural": "Cables",
+					"value": "608 * Foot"
+				},
+				{
+					"name": "NauticalMile",
+					"namePlural": "NauticalMiles",
+					"value": "6080 * Foot"
+				}
+			],
+			"divDurationType": "Velocity"
+		},
+		"Velocity": {
+			"self": "v",
+			"import": ["time"],
+			"units": [
+				{
+					"name": "Knot",
+					"namePlural": "Knots",
+					"value": "Velocity(NauticalMile) / Velocity(time.Hour)"
+				}
+			],
+			"unitGenerators": [
+				{
+					"from": "Distance",
+					"pattern": "(^Foot|^Meter|meter)$",
+					"nameSuffix": "PerSecond",
+					"valueSuffix": " / Velocity(time.Second)"
+				},
+				{
+					"from": "Distance",
+					"pattern": "^(Kilometer|Mile)$",
+					"nameSuffix": "PerHour",
+					"valueSuffix": " / Velocity(time.Hour)"
+				}
+			],
+			"mulDurationType": "Distance",
+			"divDurationType": "Acceleration"
+		},
+		"Acceleration": {
+			"self": "a",
+			"import": ["time"],
+			"unitGenerators": [
+				{
+					"from": "Velocity",
+					"pattern": "PerSecond$",
+					"nameSuffix": "Squared",
+					"valueSuffix": " / Acceleration(time.Second)"
+				}
+			],
+			"mulDurationType": "Velocity"
+		}
+	}
+}

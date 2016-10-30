@@ -1,0 +1,58 @@
+{
+	"pkgName": "angular",
+	"types": {
+		"Angle": {
+			"self": "ng",
+			"import": ["math"],
+			"units": [
+				{
+					"name": "Milliradian",
+					"namePlural": "Milliradians",
+					"value": "1"
+				},
+				{
+					"name": "Radian",
+					"namePlural": "Radians",
+					"value": "1e3"
+				},
+				{
+					"name": "Degree",
+					"namePlural": "Degreees",
+					"value": "2 * math.Pi * (Radian / 360)"
+				},
+				{
+					"name": "Gradian",
+					"namePlural": "Gradians",
+					"value": "2 * math.Pi * (Radian / 400)"
+				}
+			],
+			"divDurationType": "Velocity"
+		},
+		"Velocity": {
+			"self": "v",
+			"import": ["time"],
+			"unitGenerators": [
+				{
+					"from": "Angle",
+					"nameSuffix": "PerSecond",
+					"valueSuffix": " / Velocity(time.Second)"
+				}
+			],
+			"mulDurationType": "Angle",
+			"divDurationType": "Acceleration"
+		},
+		"Acceleration": {
+			"self": "a",
+			"import": ["time"],
+			"unitGenerators": [
+				{
+					"from": "Velocity",
+					"nameSuffix": "Squared",
+					"valueSuffix": " / Acceleration(time.Second)"
+				}
+			],
+			"mulDurationType": "Velocity"
+		}
+	}
+
+}
