@@ -13,16 +13,16 @@ instead to help you install/vendor specific versions of your Go dependencies.
 
 ## TODO
 
-[x] Code generation for sub-packages
-[x] Sub-package for angle, angular velocity and acceleration
-[x] Sub-package for linear distance, velocity and acceleration
-[x] Sub-package for planar coordinates based on distance and angle
-[ ] Support for volume, volumetric flow rate (velocity) and acceleration
-[ ] Support for mass, mass flow rate (velocity) and acceleration
-[ ] Support for force, work and torque
-[x] Metric units
-[x] Modern Imperial units
-[ ] Appropriate test coverage per package.
+- [x] Code generation for sub-packages
+- [x] Sub-package for angle, angular velocity and acceleration
+- [x] Sub-package for linear distance, velocity and acceleration
+- [x] Sub-package for planar coordinates based on distance and angle
+- [ ] Support for volume, volumetric flow rate (velocity) and acceleration
+- [ ] Support for mass, mass flow rate (velocity) and acceleration
+- [ ] Support for force, work and torque
+- [x] Metric units
+- [x] Modern Imperial units
+- [ ] Appropriate test coverage per package.
 
 ## What has changed?
 The package layout is being completely changed. Type and constant definitions have been moved into sub-packages to allow
