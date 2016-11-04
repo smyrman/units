@@ -61,17 +61,22 @@ straight-forward and painless as possible.
 
 
 ## Our experience
-We found an the original version of this code surprisingly useful back in 2012, when we where developing a autonomous
-robot using Go for the high-level programming.
+We found an earlier version of this code surprisingly useful back in 2012, when we where developing an autonomous robot
+using Go for the high-level programming.
 
 While we still used float64 values in the matrices that calculated the next system states, we found using the units
 package for the input and output values of various blocks extremely useful. This package helped us verify that we never
-did something stupid like passing a distance to a function that wanted the velocity. The simplisity of using the return
-value from`.Normalize()`on an angle, also made it very easy for us to ensure normalized angles for our navigation
+did something stupid like passing a distance to a function that wanted the velocity. The simplicity of using the return
+value from `.Normalize()`on an angle, also made it very easy for us to ensure normalized angles for our navigation
 system.
 
+Of course, we used metric values for both internal and displaying purposes, but the aim is also that this package will
+help those who wish to provide non-metric units as input or display values for their programs.
+
+
 ## Simple example
-This example shows that you can divide `linear.Distance` with a `time.Duration` (standard library) to get a velocity.
+This example shows that you can divide `linear.Distance` with a `time.Duration` (standard library) to get a velocity,
+as well as use arbitrary units for input and display purposes.
 
 ```go
 package main
@@ -86,7 +91,7 @@ func main() {
 	d := 66 * linear.Feet
 	t := 2 * time.Second
 	v := d.DivDuration(t)
-	fmt.Printf("v = %.2f m/s^2\n", v.MetersPerSecond())
+	fmt.Printf("v = %.2f m/s\n", v.MetersPerSecond())
 	fmt.Printf("v = %.2f kmph\n", v.KilometersPerHour())
 	fmt.Printf("v = %.2f mph\n", v.MilesPerHour())
 }
@@ -111,7 +116,7 @@ To migrate, search and replace the following:
 - `units.AngularVelocity` -> `angular.Velocity`
 - `units.Coordinate` -> `planar.Point`
 
-Then, assure the propper imports, most conveniently through the use of
+Then, assure the proper imports, most conveniently through the use of
 [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports), or manually by replacing the
 "github.com/smyrman/units" import with the appropriate import(s):
 
