@@ -8,8 +8,7 @@ Note that this library is NOT production ready. If you want to use it anyway, co
 
 ## Breaking changes!
 This branch of the units library is introduces breaking changes to the API. To use the old API, please checkout tag
-`v0.0.1`. If you download the units library via `go get`, consider using a tool such as [Glide](http://glide.sh/)
-instead to help you install/vendor specific versions of your Go dependencies.
+`v0.0.1`.
 
 To instead use the new API, see this [short migration guide](#migrating-from-v001) for more information.
 
