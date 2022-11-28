@@ -91,12 +91,6 @@ func main() {
 
 See the [godoc reference docs](http://godoc.org/github.com/smyrman/units) for a full list of methods per type.
 
-
-## Origin
-
-The units package was originally developed for use in the robot Loke (eng:Loki), that participated in the Eurobot competition in France in 2012.
-
-
 ## Migrating from v0.0.1
 
 Since v0.0.1, the package layout has been changed. Type and constant definitions have been moved into sub-packages to allow for shorter names, and a more restricted scope from which package symmetry can arise.
