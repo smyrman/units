@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/smyrman/units.svg?branch=master)](https://travis-ci.org/smyrman/units)
-[![GoDoc](https://godoc.org/github.com/smyrman/units?status.svg)](http://godoc.org/github.com/smyrman/units)
+[![Go Reference](https://pkg.go.dev/badge/github.com/smyrman/units.svg)](https://pkg.go.dev/github.com/smyrman/units)
 
 # Units
 
@@ -61,9 +61,9 @@ Considerting the low amount of usage of _this_ units package in particular, you 
 
 We found an earlier version of this code surprisingly useful back in 2012, when we where developing an autonomous robot using Go for the high-level programming.
 
-While we still used plain float64 values in the matrices that calculated the next system states, we found using the units package for the input and output values of various blocks extremely useful. This package helped us verify that we never did something stupid like passing a distance to a function that wanted the velocity. The simplicity of using the return value from `.Normalize()`on an angle, also made it very easy for us to ensure normalized angles for our navigation system. Forgetting to normilize an angle could lead to spinning robots...
+While we still used plain float64 values in the matrices that calculated the next system states, we found using the units package for the input and output values of various blocks extremely useful. This package helped us verify that we never did something stupid like passing a distance to a function that expected a velocity. The simplicity of using the return value from `.Normalize()`on an angle, also made it very easy for us to ensure normalized angles for our navigation system. Forgetting to normilize an angle could lead to spinning robots...
 
-Of course, we used metric values for both internal and displaying purposes, but the aim is also that this package will help those who wish to provide non-metric units as input or display values for their programs.
+We used metric values for both internal and displaying purposes, but the aim is also that this package will help those who wish to provide non-metric units as input or display values for their programs.
 
 ## Simple example
 
