@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/smyrman/units.svg?branch=master)](https://travis-ci.org/smyrman/units)
+[![GitHub Actions](https://github.com/smyrman/units/workflows/Go/badge.svg?branch=master)](https://github.com/smyrman/units/actions?query=workflow%3AGo+branch%master)
 [![Go Reference](https://pkg.go.dev/badge/github.com/smyrman/units.svg)](https://pkg.go.dev/github.com/smyrman/units)
 
 # Units
@@ -8,16 +8,16 @@ Units is a small Go package that utilizes Go's strict type system to achieve bet
 It currently has the following sub-packages:
 
 - [angular](http://godoc.org/github.com/smyrman/units/angular) defines the types:
-	- Angle
-	- Velocity
-	- Acceleration
+  - Angle
+  - Velocity
+  - Acceleration
 - [linear](https://godoc.org/github.com/smyrman/units/linear) define the types:
-	- Distance
-	- Velocity
-	- Acceleration
+  - Distance
+  - Velocity
+  - Acceleration
 - [planar](https://godoc.org/github.com/smyrman/units/planar) defines the types:
-	- Point
-	- Area
+  - Point
+  - Area
 
 Each type has defined constants for relevant units. In general, you don't need to worry about which unit the underlying values is stored in, as long as you **always multiply with a relevant uint** when you first set your value. E.g.:
 
@@ -25,10 +25,9 @@ Each type has defined constants for relevant units. In general, you don't need t
 var a angular.Angle = 90 * angular.Degrees
 ```
 
-
 ## Use at your own risk ⚠️
 
-This libary has seen low usage and has little testing. If you still prefer to use this package over other packages, contributions are still welcome.
+This library has seen low usage and has little testing. If you still prefer to use this package over other packages, contributions are still welcome.
 
 ## Alternatives
 
@@ -50,18 +49,17 @@ Alternative units pacakges:
 - [x] Modern Imperial units
 - [ ] Appropriate test coverage per package.
 
-
 ## Why would I want to use a units package?
 
 The [Mars Climate Orbiter](https://en.wikipedia.org/wiki/Mars_Climate_Orbiter) crashed into Mars when software producing the non-SI units of pound-seconds was used to generate input to a program expecting newton-seconds (N s). While the units package would not have prevented that particular issue of communication between programs, the goal is that it will help you to avoid unit related mistakes within your own program, and to make working with various units as straight-forward and painless as possible.
 
-Considerting the low amount of usage of _this_ units package in particular, you may want to consider one that's more used though! Or make sure to add the number of tests that you need to be confident in your solution.
+Considering the low amount of usage of _this_ units package in particular, you may want to consider one that's more used though! Or make sure to add the number of tests that you need to be confident in your solution.
 
 ## Our experience
 
 We found an earlier version of this code surprisingly useful back in 2012, when we where developing an autonomous robot using Go for the high-level programming.
 
-While we still used plain float64 values in the matrices that calculated the next system states, we found using the units package for the input and output values of various blocks extremely useful. This package helped us verify that we never did something stupid like passing a distance to a function that expected a velocity. The simplicity of using the return value from `.Normalize()`on an angle, also made it very easy for us to ensure normalized angles for our navigation system. Forgetting to normilize an angle could lead to spinning robots...
+While we still used plain float64 values in the matrices that calculated the next system states, we found using the units package for the input and output values of various blocks extremely useful. This package helped us verify that we never did something stupid like passing a distance to a function that expected a velocity. The simplicity of using the return value from `.Normalize()`on an angle, also made it very easy for us to ensure normalized angles for our navigation system. Forgetting to normalize an angle could lead to spinning robots...
 
 We used metric values for both internal and displaying purposes, but the aim is also that this package will help those who wish to provide non-metric units as input or display values for their programs.
 
@@ -87,23 +85,3 @@ func main() {
 	fmt.Printf("v = %.2f mph\n", v.MilesPerHour())
 }
 ```
-
-See the [godoc reference docs](http://godoc.org/github.com/smyrman/units) for a full list of methods per type.
-
-## Migrating from v0.0.1
-
-Since v0.0.1, the package layout has been changed. Type and constant definitions have been moved into sub-packages to allow for shorter names, and a more restricted scope from which package symmetry can arise.
-
-To migrate, search and replace the following:
-
-- `units.Distance` -> `linear.Distance`
-- `units.Velocity` -> `linear.Velocity`
-- `units.Angle` -> `angular.Angle`
-- `units.AngularVelocity` -> `angular.Velocity`
-- `units.Coordinate` -> `planar.Point`
-
-Then, assure the proper imports, most conveniently through the use of [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports), or manually by replacing the "github.com/smyrman/units" import with the appropriate import(s):
-
-- "github.com/smyrman/units/linear"
-- "github.com/smyrman/units/angular"
-- "github.com/smyrman/units/planar"

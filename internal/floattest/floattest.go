@@ -9,10 +9,7 @@ import (
 func AlmostEqual(x, y float64) bool {
 	const tolerance = 1e-11
 
-	if math.Abs(x-y) < tolerance {
-		return true
-	}
-	return false
+	return math.Abs(x-y) < tolerance
 }
 
 // CompareCase should be used for Go >= 1.7 sub-tests that compares a returned float64 value from a function (Func)

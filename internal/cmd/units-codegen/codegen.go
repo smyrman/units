@@ -13,6 +13,7 @@ import (
 
 const helpText = `Usage:
   units-codegen[ -o FILE] -t TYPE PKG_CONFIG_FILE
+
 `
 
 type outputVal struct {
@@ -26,7 +27,7 @@ func (o outputVal) String() string {
 
 func (o *outputVal) Write(p []byte) (n int, err error) {
 	if o.w == nil {
-		return 0, errors.New("No writer configured")
+		return 0, errors.New("no writer configured")
 	}
 	return o.w.Write(p)
 }
@@ -40,7 +41,7 @@ func (o *outputVal) Set(s string) error {
 	o.name = s
 	fd, err := os.Create(s)
 	if err != nil {
-		return fmt.Errorf("Could not create output file: %s", err.Error())
+		return fmt.Errorf("could not create output file: %s", err.Error())
 	}
 	o.w = fd
 	return nil
@@ -54,10 +55,12 @@ var options struct {
 
 func init() {
 	flag.Usage = func() {
-		fmt.Fprintln(os.Stderr, helpText)
+		fmt.Fprint(os.Stderr, helpText)
 		flag.PrintDefaults()
 	}
-	options.output.Set("")
+	if err := options.output.Set(""); err != nil {
+		panic(err)
+	}
 	flag.Var(&options.output, "o", "Write to file instead of stdout")
 	flag.StringVar(&options.typeName, "t", "", "Type to generate code for (required)")
 	log.SetPrefix("units-codegen:")
