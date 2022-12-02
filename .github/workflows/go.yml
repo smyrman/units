@@ -1,0 +1,65 @@
+name: Go
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.17
+        id: go
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Go modules cache
+        id: cache-go-module
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Setup Go build cache
+        id: cache-go-build
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/go-build
+          key: ${{ runner.os }}-gobuild-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-gobuild-
+
+      - name: Download dependencies
+        if: steps.cache-go-module.outputs.cache-hit != 'true'
+        run: go mod download
+
+      - name: Verify go modules up to date
+        run: |
+          set -ex
+          go mod tidy
+          [ -z "$(git diff -- go.{mod,sum})" ] # Check there are no changes!
+
+      - name: Test
+        run: go test -race ./...
+
+      # Run golangci-lint in same job as tests as the golangci-lint task can not
+      # resolve private dependencies.
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.50
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          only-new-issues: false
+          skip-cache: false
+          skip-pkg-cache: true
+          skip-build-cache: true
+          args: --timeout=10m
