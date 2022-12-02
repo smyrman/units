@@ -1,4 +1,4 @@
-[![GitHub Actions](https://github.com/smyrman/units/workflows/Go/badge.svg?branch=master)](https://github.com/smyrman/units/actions?query=workflow%3AGo+branch%master)
+[![GitHub Actions](https://github.com/smyrman/units/workflows/Go/badge.svg?branch=master)](https://github.com/smyrman/units/actions/workflows/go.yml?query=branch%3Amaster)
 [![Go Reference](https://pkg.go.dev/badge/github.com/smyrman/units.svg)](https://pkg.go.dev/github.com/smyrman/units)
 
 # Units
